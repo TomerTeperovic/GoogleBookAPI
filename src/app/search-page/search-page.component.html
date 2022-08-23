@@ -1,0 +1,16 @@
+<h1 *ngIf="username$ | async as user">Greeting {{user}}!</h1>
+
+
+<div style="float: top; width:100%; height:20%">
+  <label for="search">Search Items</label>
+  <input type="text" id="search" name="search" autocomplete="off" (keyup)="search($any($event.target).value)"/>
+  <button  [routerLink]="['/whishlist-page']">GO TO CART</button>
+</div>
+
+
+
+<ng-container *ngIf="searchValue" >
+  <ol>
+  <app-search-item *ngFor="let book of (books$ | async)" [book]="book"></app-search-item> 
+  </ol>
+</ng-container> 

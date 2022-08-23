@@ -1,0 +1,34 @@
+ 
+<div style="float: left; width:50%;">
+ 
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+     
+      <p>
+        <label for="username">User Name</label>
+        <input type="text" id="firstname" name="username" formControlName="username">
+      </p>
+     
+      <p>
+        <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+      </p>
+     
+    </form>
+     
+    </div>
+     
+    <div style="float: right; width:50%;">
+     
+      <h3>Form Status</h3>
+      <b>valid : </b>{{contactForm.valid}}
+      <b>invalid : </b>{{contactForm.invalid}}
+      <b>touched : </b>{{contactForm.touched}}
+      <b>untouched : </b>{{contactForm.untouched}}
+      <b>pristine : </b>{{contactForm.pristine}}
+      <b>dirty : </b>{{contactForm.dirty}}
+      <b>disabled : </b>{{contactForm.disabled}}
+      <b>enabled : </b>{{contactForm.enabled}}
+     
+      <h3>Form Value</h3>
+      {{contactForm.value |json}}
+     
+    </div>

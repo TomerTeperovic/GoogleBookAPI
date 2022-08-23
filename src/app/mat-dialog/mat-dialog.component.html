@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>BOOK ID: {{data.id}}</h1>
+<div mat-dialog-content>
+    <div class="title" *ngIf="data.volumeInfo.title"><b>title:</b> {{data.volumeInfo.title}}</div>
+    <div class="subtitle" *ngIf="data.volumeInfo.subtitle"><b>subtitle:</b>  {{data.volumeInfo.subtitle}}</div>
+    <div class="authors" *ngIf="data.volumeInfo.authors"><b>authors:</b>  {{data.volumeInfo.authors}}</div>
+    <div class="publishDate" *ngIf="data.volumeInfo.publishDate"><b>publishDate:</b>  {{data.volumeInfo.publishDate}}</div>
+    <div class="description" *ngIf="data.volumeInfo.description"><b>description:</b>  {{data.volumeInfo.description}}</div>
+    <div class="averageRating" *ngIf="data.volumeInfo.averageRating"><b>averageRating:</b>  {{data.volumeInfo.averageRating}}</div>
+    <div class="ratingsCount" *ngIf="data.volumeInfo.ratingsCount"><b>ratingsCount:</b>  {{data.volumeInfo.ratingsCount}}</div>
+    <img src="{{data.volumeInfo.imageLinks.thumbnail}}" alt="">
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>CLOSE</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="bookAddToCart()">ADD TO CART</button>
+</div>
