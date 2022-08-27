@@ -1,19 +1,18 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { from, Observable } from 'rxjs';
-
+import { AppService } from '../services/app-service/app.service';
 import { GoogleBookService } from '../services/google-book-service/google-book.service';
 import { Book } from '../services/google-book-service/types.service';
-
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
-import { AppService } from '../services/app-service/app.service';
 
 @Component({
-  selector: 'app-search-page',
-  templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.scss'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchPageComponent implements OnInit{
+export class SearchComponent implements OnInit {
+
   username$: Observable<string> | undefined
   searchValue = ''
   books$: Observable<Book[]> | undefined;
@@ -22,8 +21,6 @@ export class SearchPageComponent implements OnInit{
   ngOnInit(): void {
     this.username$ = this.appService.getUserName()
   }
-
-
 
   search(query:string) {
     from(query).pipe(

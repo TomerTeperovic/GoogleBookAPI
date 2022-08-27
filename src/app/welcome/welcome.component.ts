@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AppService } from '../services/app-service/app.service';
 import { Router } from '@angular/router';
-
+import { AppService } from '../services/app-service/app.service';
 
 @Component({
-  selector: 'app-welcome-screen',
-  templateUrl: './welcome-screen.component.html',
-  styleUrls: ['./welcome-screen.component.scss'],
+  selector: 'app-welcome',
+  templateUrl: './welcome.component.html',
+  styleUrls: ['./welcome.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WelcomeScreenComponent implements OnInit{
+export class WelcomeComponent implements OnInit {
+
   contactForm: any
   
   constructor(private formBuilder:FormBuilder, private appService:AppService,private router:Router) { }
@@ -23,8 +23,7 @@ export class WelcomeScreenComponent implements OnInit{
   }
   onSubmit(){
     this.appService.setUserName(this.contactForm.value.username)
-    this.router.navigate(["/search-page"])
+    this.router.navigate(["/search"])
   }
-  
 
 }

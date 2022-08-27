@@ -4,13 +4,13 @@ import { CartService } from '../services/cart-service/cart.service';
 import { Book } from '../services/google-book-service/types.service';
 
 @Component({
-  selector: 'app-whishlist-page',
-  templateUrl: './whishlist-page.component.html',
-  styleUrls: ['./whishlist-page.component.scss'],
+  selector: 'app-wishlist',
+  templateUrl: './wishlist.component.html',
+  styleUrls: ['./wishlist.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WhishlistPageComponent implements OnInit {
-  display:boolean = false
+export class WishlistComponent implements OnInit {
+
   wishList$!:Observable<Book[]> 
   constructor(private cartService: CartService) { }
 
@@ -22,4 +22,3 @@ export class WhishlistPageComponent implements OnInit {
     this.wishList$ = this.cartService.getWishList()
   }
 }
-

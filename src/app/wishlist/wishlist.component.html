@@ -1,7 +1,8 @@
-<button  [routerLink]="['/search-page']">BACK</button>
+<button  [routerLink]="['/search']">BACK</button>
 <ng-container *ngFor="let book of (wishList$ | async)">
   <p>
   {{book.volumeInfo.title}}
     <button (click)="deleteBook(book)">DELETE</button>
   </p>
 </ng-container>
+

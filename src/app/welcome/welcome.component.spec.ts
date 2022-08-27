@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WhishlistPageComponent } from './whishlist-page.component';
+import { WelcomeComponent } from './welcome.component';
 
-describe('WhishlistPageComponent', () => {
-  let component: WhishlistPageComponent;
-  let fixture: ComponentFixture<WhishlistPageComponent>;
+describe('WelcomeComponent', () => {
+  let component: WelcomeComponent;
+  let fixture: ComponentFixture<WelcomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WhishlistPageComponent ]
+      declarations: [ WelcomeComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WhishlistPageComponent);
+    fixture = TestBed.createComponent(WelcomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
