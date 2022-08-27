@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { from, Observable } from 'rxjs';
 
 import { GoogleBookService } from '../services/google-book-service/google-book.service';
@@ -10,7 +10,8 @@ import { AppService } from '../services/app-service/app.service';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.scss']
+  styleUrls: ['./search-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPageComponent implements OnInit{
   username$: Observable<string> | undefined

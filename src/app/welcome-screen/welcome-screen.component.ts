@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppService } from '../services/app-service/app.service';
 import { Router } from '@angular/router';
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-welcome-screen',
   templateUrl: './welcome-screen.component.html',
-  styleUrls: ['./welcome-screen.component.scss']
+  styleUrls: ['./welcome-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WelcomeScreenComponent implements OnInit{
   contactForm: any

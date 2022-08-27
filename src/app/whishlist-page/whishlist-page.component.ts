@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../services/cart-service/cart.service';
 import { Book } from '../services/google-book-service/types.service';
@@ -6,7 +6,8 @@ import { Book } from '../services/google-book-service/types.service';
 @Component({
   selector: 'app-whishlist-page',
   templateUrl: './whishlist-page.component.html',
-  styleUrls: ['./whishlist-page.component.scss']
+  styleUrls: ['./whishlist-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WhishlistPageComponent implements OnInit {
   display:boolean = false

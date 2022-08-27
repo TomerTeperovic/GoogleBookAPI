@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from 'src/app/mat-dialog/mat-dialog.component';
 import { CartService } from 'src/app/services/cart-service/cart.service';
@@ -7,7 +7,8 @@ import { Book } from 'src/app/services/google-book-service/types.service';
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
-  styleUrls: ['./search-item.component.scss']
+  styleUrls: ['./search-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchItemComponent {
   @Input() book!: Book;
