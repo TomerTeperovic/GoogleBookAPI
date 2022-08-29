@@ -12,7 +12,6 @@ export class AkitaStoreService {
   getBooks(query:string){
     return this.googleBookService.search(query).pipe(tap( entities =>{
       this.akitaStoreStore.set(entities)
-      // console.log(this.akitaStoreStore["storeValue"]["entities"])
     })).subscribe()
   }
   getBook(volumeId: string){
