@@ -9,8 +9,9 @@
 
 
 
-<ng-container *ngIf="searchValue" >
+<ng-container *ngIf="!(loading$|async)" >
   <ol>
   <app-search-item *ngFor="let book of (books$ | async)" [book]="book"></app-search-item> 
   </ol>
-</ng-container> 
+</ng-container>
+

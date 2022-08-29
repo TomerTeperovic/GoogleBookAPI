@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { AppService } from '../services/app-service/app.service';
-import { GoogleBookService } from '../services/google-book-service/google-book.service';
-import { Book } from '../services/google-book-service/types.service';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+
+import { AkitaStoreService } from '../state/akita-store.service';
+import { AkitaStoreQuery } from '../state/akita-store.query';
+import { Book } from '../services/google-book-service/types.service';
+
 
 @Component({
   selector: 'app-search',
@@ -14,21 +17,22 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 export class SearchComponent implements OnInit {
 
   username$: Observable<string> | undefined
-  searchValue = ''
-  books$: Observable<Book[]> | undefined;
+  books$: Observable<Book[]> | undefined = this.akitaStoreQuery.selectAll()
+  loading$ = this.akitaStoreQuery.selectLoading()
   
-  constructor(private googleBookService:GoogleBookService, private appService:AppService) { }
+  constructor(private appService:AppService,private akitaStoreService:AkitaStoreService,
+    private akitaStoreQuery:AkitaStoreQuery) { }
   ngOnInit(): void {
     this.username$ = this.appService.getUserName()
   }
 
   search(query:string) {
     from(query).pipe(
-      debounceTime(150),
+      debounceTime(1500),
       distinctUntilChanged(),
       tap( (query:string) => {
-        this.searchValue = query
-        this.books$ = this.googleBookService.search(query)
+        console.log(query)
+        this.akitaStoreService.getBooks(query)
       })
     ).subscribe();
   }

@@ -1,6 +1,6 @@
 
 
-export type Book = {
+export interface Book  {
     id: string;
     volumeInfo: {
       title: string;
