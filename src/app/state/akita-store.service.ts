@@ -9,8 +9,9 @@ export class AkitaStoreService {
 
   constructor(private googleBookService:GoogleBookService,private akitaStoreStore:AkitaStoreStore) {}
 
-  getBooks(query:string){
-    return this.googleBookService.search(query).pipe(tap( entities =>{
+  getBooks(query:string,page: number = 1){
+    this.googleBookService.search(query,page).pipe(tap( entities =>{
+      console.log(entities)
       this.akitaStoreStore.set(entities)
     })).subscribe()
   }

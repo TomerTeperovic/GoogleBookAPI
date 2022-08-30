@@ -12,8 +12,11 @@ export class GoogleBookService {
 
   constructor(private http: HttpClient) { }
 
-  search(query: string): Observable<Book[]> {
-    return this.http.get<{ items: Book[] }>(`${this.URL}?q=${query}&maxResults=20&startIndex=0`).pipe(map(books => books.items || []));
+  search(query: string,page:number): Observable<Book[]> {
+    let startIndex:number
+    const maxResults = 20
+    startIndex = (page - 1) * 20 
+    return this.http.get<{ items: Book[] }>(`${this.URL}?q=${query}&maxResults=${maxResults}&startIndex=${startIndex}`).pipe(map(books => books.items || []));
   }
 
   getById(volumeId: string): Observable<Book> {
