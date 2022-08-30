@@ -11,7 +11,6 @@ export class AkitaStoreService {
 
   getBooks(query:string,page: number = 1){
     this.googleBookService.search(query,page).pipe(tap( entities =>{
-      console.log(entities)
       this.akitaStoreStore.set(entities)
     })).subscribe()
   }
